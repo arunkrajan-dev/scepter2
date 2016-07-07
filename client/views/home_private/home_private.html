@@ -1,13 +1,64 @@
 <template name="HomePrivate">
-	<div class="container">
-		<h2 id="page_title" class="pull-left">
-			Welcome {{userFullName}}!
-		</h2>
-		<div id="page_menu" class="pull-right">
+	<br/><br/>
+	<div class="row">
+		<div class="col s12 m6 l6">
+			<div class="row">
+				<div class="col s12 m3 l3 center-align">
+			          	<i class="medium material-icons ">supervisor_account</i>
+					<div class="center-align"><a href="{{pathFor 'members'}}" class="red-text darken-3-text">Members</a></div>
+				</div>
+				<div class="col s12 m3 l3 center-align">
+			          	<i class="medium material-icons">contacts</i>
+					<div class="center-align red-text"><a href="{{pathFor 'suppliers'}}" class="red-text darken-3-text">Suppliers</a></div>
+				</div>
+				<div class="col s12 m3 l3 center-align">
+			          	<i class="medium material-icons">assignment_ind</i>
+					<div class="center-align"><a href="{{pathFor 'employees'}}" class="red-text darken-3-text">Employees</a></div>			          	
+				</div>
+				<div class="col s12 m3 l3 center-align">
+			          	<i class="medium material-icons">contact_phone</i>
+					<div class="center-align"><a href="{{pathFor 'others'}}" class="red-text darken-3-text">Contacts</a></div>
+				</div>
+			</div>			
+			<div class="row">
+				<div class="col s12 m3 l3 center-align">
+			          	<i class="medium material-icons ">receipt</i>
+					<div class="center-align"><a href="#" class="red-text darken-3-text">Invoices</a></div>
+				</div>
+				<div class="col s12 m3 l3 center-align">
+			          	<i class="medium material-icons">description</i>
+					<div class="center-align"><a href="#" class="red-text darken-3-text">PurOrd</a></div>
+				</div>
+				<div class="col s12 m3 l3 center-align">
+			          	<i class="medium material-icons">attach_money</i>
+			          	<div class="center-align"><a href="{{pathFor 'expenditures'}}" class="red-text darken-3-text">Expenses</a></div>
+				</div>
+				<div class="col s12 m3 l3 center-align">
+			          	<i class="medium material-icons">card_travel</i>
+			          	<div class="center-align"><a href="{{pathFor 'collections'}}" class="red-text darken-3-text">Collections</a></div>
+				</div>			
+			</div>
+			<div class="row">
+				<div class="col s12 m3 l3 center-align">
+			          	<i class="medium material-icons">folder_open</i>
+			          	<div class="center-align"><a href="{{pathFor 'documents'}}" class="red-text darken-3-text">Documents</a></div>
+				</div>
+				<div class="col s12 m3 l3 center-align">
+			          	<i class="medium material-icons ">shopping_cart</i>
+			          	<div class="center-align"><a href="{{pathFor 'products'}}" class="red-text darken-3-text">Products</a></div>
+				</div>
+				<div class="col s12 m3 l3 center-align">
+			          	<i class="medium material-icons">verified_user</i>
+					<div class="center-align"><a href="{{pathFor 'admin'}}" class="red-text darken-3-text">Users</a></div>
+				</div>
+				<div class="col s12 m3 l3 center-align">
+			          	<i class="medium material-icons">insert_chart</i>
+					<div class="center-align"><a href="#" class="red-text darken-3-text">Reports</a></div>
+				</div>
+			</div>
 		</div>
-		<p id="page_text">
-			Place for dashboard here...
-		</p>
+		<div class="col s12 m6 l6">
+			<h3 class="header center orange-text">Day Report</h3>
+		</div>
 	</div>
 </template>
-
