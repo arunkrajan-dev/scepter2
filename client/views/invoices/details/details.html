@@ -1,0 +1,88 @@
+<template name="InvoicesDetails">
+	<div class="page-container">
+		<div class="row">
+			<div class="col-md-12" id="content">
+				<div class="row" id="title_row">
+					<div class="col-md-12">
+						<div id="page_menu" class="pull-right">
+						</div>
+					</div>
+				</div>
+				{{> InvoicesDetailsDetailsForm}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12" id="menu">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12" id="subcontent">
+				{{> yield region='InvoicesDetailsSubcontent'}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="InvoicesDetailsDetailsForm">
+	<div id="invoices-details-details-form" class="container ">
+		<div id="form-back-button" class="waves-effect waves-light btn">
+			<i class="material-icons left">
+				reply
+			</i>
+			Back
+		</div>
+		<h4>
+			Invoice #{{invoice_details.invoiceNumber}}
+		</h4>
+		<form class="form form_InvoicesDetailsDetailsForm form-horizontal" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-invoice-number">
+				<p class="input-field col s12">
+					<input readonly id="field-invoice-number" value="{{invoice_details.invoiceNumber}}" type="text" >
+					<label class="{{#if invoice_details.invoiceNumber}}active{{/if}}" for="field-invoice-number">
+						Number
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-date">
+				<p class="input-field col s12">
+					<input readonly id="field-date" value="{{formatDate invoice_details.date 'MM-DD-YYYY'}}" type="text" >
+					<label class="{{#if (formatDate invoice_details.date 'MM-DD-YYYY')}}active{{/if}}" for="field-date">
+						Created Date
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-member-name">
+				<p class="input-field col s12">
+					<input readonly id="field-member-name" value="{{invoice_details.member.name}}" type="text" >
+					<label class="{{#if invoice_details.member.name}}active{{/if}}" for="field-member-name">
+						member
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-total-amount">
+				<p class="input-field col s12">
+					<input readonly id="field-total-amount" value="{{invoice_details.totalAmount}}" type="text" >
+					<label class="{{#if invoice_details.totalAmount}}active{{/if}}" for="field-total-amount">
+						Total
+					</label>
+				</p>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div col-sm-9 col-sm-offset-3">
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

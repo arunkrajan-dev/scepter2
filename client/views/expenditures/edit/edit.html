@@ -1,0 +1,122 @@
+<template name="ExpendituresEdit">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> ExpendituresEditEditForm}}
+</template>
+
+<template name="ExpendituresEditEditForm">
+	<div id="expenditures-edit-edit-form" class="container ">
+		<h4>
+			Edit expenditure
+		</h4>
+		<form class="form form_ExpendituresEditEditForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="inline fields form-group  field-type">
+				<label for="field-type">
+					Type
+				</label>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-daily" type="radio" value="daily" group="type" name="type" data-type="array" autofocus="autofocus" {{itemIsChecked expenditure_details.type "daily"}}>
+						<label for="form-daily">
+							Daily
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-touring" type="radio" value="touring" group="type" name="type" data-type="array" {{itemIsChecked expenditure_details.type "touring"}}>
+						<label for="form-touring">
+							Touring
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-monthly" type="radio" value="monthly" group="type" name="type" data-type="array" {{itemIsChecked expenditure_details.type "monthly"}}>
+						<label for="form-monthly">
+							Monthly
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-others" type="radio" value="others" group="type" name="type" data-type="array" {{itemIsChecked expenditure_details.type "others"}}>
+						<label for="form-others">
+							Others
+						</label>
+					</p>
+				</div>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-sub-type">
+				<p class="input-field col s12">
+					<input type="text" id="field-sub-type" name="subType" value="{{expenditure_details.subType}}"  required="required">
+					<label class="{{#if expenditure_details.subType}}active{{/if}}" for="field-sub-type">
+						Sub Type
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-date">
+				<p class="input-field col s12">
+					<label class="{{#if (formatDate expenditure_details.date 'MM-DD-YYYY')}}active{{/if}}" for="field-date">
+						Date
+					</label>
+					<i class="material-icons prefix">
+						event_note
+					</i>
+					<input type="text" id="field-date" name="date" value="{{formatDate expenditure_details.date 'MM-DD-YYYY'}}"  required="required" data-type="date" data-format="MM-DD-YYYY">
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-total-amount">
+				<p class="input-field col s12">
+					<input type="text" id="field-total-amount" name="totalAmount" value="{{expenditure_details.totalAmount}}"  required="required" data-type="float">
+					<label class="{{#if expenditure_details.totalAmount}}active{{/if}}" for="field-total-amount">
+						Total
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<button id="form-submit-button" class="btn waves-effect waves-light" type="submit">
+						<i class="material-icons right">
+							check
+						</i>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn">
+						Cancel
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

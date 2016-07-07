@@ -1,0 +1,164 @@
+<template name="Purchaseorders">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> PurchaseordersView}}
+</template>
+
+<template name="PurchaseordersView">
+	<div id="purchaseorders-view" >
+		<h3>
+			purchaseorders - {{this.params.account}}
+		</h3>
+		<form class="form">
+			<div id="dataview-controls" class="row">
+				<div id="dataview-controls-insert" class="item col s2 {{insertButtonClass}}">
+					<div class="input-field col s12">
+						<div id="dataview-insert-button" class="btn">
+							<i class="material-icons left">
+								control_point
+							</i>
+							Add new
+						</div>
+					</div>
+				</div>
+				<div id="dataview-controls-search" class="item col s4">
+					{{#if isNotEmpty}}
+					<div class="input-field col s12">
+						<i id="dataview-search-button" class="material-icons prefix">
+							search
+						</i>
+						<input id="dataview-search-input" style="margin-bottom:0px;" type="text">
+						<label for="dataview-search-input">
+							Search
+						</label>
+					</div>
+					{{/if}}
+				</div>
+				<div id="dataview-controls-export" class="item col s4">
+					{{#if isNotEmpty}}
+		{{#if isFound}}
+					<div>
+					</div>
+					{{else}}
+					<a class="dropdown-button btn" href="#" data-activates="dropdown_export">
+						Export
+					</a>
+					<ul id="dropdown_export" class="dropdown-content">
+						<li id="dataview-export-csv" class="item">
+							<i class="edit icon">
+							</i>
+							Export to CSV
+						</li>
+						<li id="dataview-export-tsv" class="item">
+							<i class="delete icon">
+							</i>
+							Export to TSV
+						</li>
+						<li id="dataview-export-json" class="item">
+							<i class="hide icon">
+							</i>
+							Export to JSON
+						</li>
+					</ul>
+					{{/if}}
+	{{/if}}
+				</div>
+			</div>
+		</form>
+		{{#if isNotEmpty}}
+			{{#if isNotFound}}
+		<div class="alert alert-warning">
+			"{{searchString}}" not found.
+		</div>
+		{{else}}
+		<div id="dataview-data">
+			{{#if viewAsTable}} {{> PurchaseordersViewTable}} {{/if}}
+		</div>
+		{{/if}}
+		{{else}}
+		<div class="alert alert-info">
+			No purchaseorders :(
+		</div>
+		{{/if}}
+	</div>
+</template>
+
+<template name="PurchaseordersViewTable">
+	<table id="dataview-table" class="striped">
+		<thead id="dataview-table-header">
+			<tr id="dataview-table-header-row">
+				<th class="th-sortable" data-sort="purchaseorderNumber">
+					Number
+				</th>
+				<th class="th-sortable" data-sort="date">
+					Created Date
+				</th>
+				<th class="th-sortable" data-sort="supplier.name">
+					supplier
+				</th>
+				<th class="th-sortable" data-sort="totalAmount">
+					Total
+				</th>
+				<th>
+					&nbsp;
+				</th>
+				<th>
+					&nbsp;
+				</th>
+			</tr>
+		</thead>
+		<tbody id="dataview-table-items">
+			{{#each tableItems}} {{> PurchaseordersViewTableItems}} {{/each}}
+		</tbody>
+	</table>
+	<div id="delete_record" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<h4>
+				Delete
+			</h4>
+			<p>
+				Delete? Are you sure?
+			</p>
+		</div>
+		<div class="modal-footer">
+			<div class="red btn modal-action modal-close modal-deny waves-effect waves-green">
+				<i class="remove icon">
+				</i>
+				No
+			</div>
+			<div class="green btn modal-action modal-close modal-confirm waves-effect waves-green">
+				<i class="checkmark icon">
+				</i>
+				Yes
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="PurchaseordersViewTableItems">
+	<tr id="dataview-table-items-row">
+		<td>
+			{{purchaseorderNumber}}
+		</td>
+		<td>
+			{{formatDate date 'MM-DD-YYYY'}}
+		</td>
+		<td>
+			{{supplier.name}}
+		</td>
+		<td>
+			{{totalAmount}}
+		</td>
+		<td>
+			<span id="edit-button" class="fa fa-pencil {{editButtonClass}}" title="Edit">
+			</span>
+		</td>
+		<td>
+			<span id="delete-button" class="fa fa-trash-o {{deleteButtonClass}}" title="Delete">
+			</span>
+		</td>
+	</tr>
+</template>
+

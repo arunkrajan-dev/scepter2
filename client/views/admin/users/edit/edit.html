@@ -1,0 +1,131 @@
+<template name="AdminUsersEdit">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> AdminUsersEditEditForm}}
+</template>
+
+<template name="AdminUsersEditEditForm">
+	<div id="admin-users-edit-edit-form" class="container ">
+		<h4>
+			Edit user
+		</h4>
+		<form class="form form_AdminUsersEditEditForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-profile-name">
+				<p class="input-field col s12">
+					<input type="text" id="field-profile-name" name="profile.name" value="{{admin_user.profile.name}}"  autofocus="autofocus" required="required">
+					<label class="{{#if admin_user.profile.name}}active{{/if}}" for="field-profile-name">
+						Name
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-profile-email">
+				<p class="input-field col s12">
+					<input type="text" id="field-profile-email" name="profile.email" value="{{admin_user.profile.email}}"  required="required" data-type="email">
+					<label class="{{#if admin_user.profile.email}}active{{/if}}" for="field-profile-email">
+						E-mail
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="inline fields form-group  field-roles">
+				<label for="field-roles">
+					Role
+				</label>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-user" type="radio" value="user" group="roles" name="roles" data-type="array" {{itemIsChecked admin_user.roles "user"}}>
+						<label for="form-user">
+							User
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-admin" type="radio" value="admin" group="roles" name="roles" data-type="array" {{itemIsChecked admin_user.roles "admin"}}>
+						<label for="form-admin">
+							Admin
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-md" type="radio" value="md" group="roles" name="roles" data-type="array" {{itemIsChecked admin_user.roles "md"}}>
+						<label for="form-md">
+							Managing Director
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-gm" type="radio" value="gm" group="roles" name="roles" data-type="array" {{itemIsChecked admin_user.roles "gm"}}>
+						<label for="form-gm">
+							General Manager
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-cashier" type="radio" value="cashier" group="roles" name="roles" data-type="array" {{itemIsChecked admin_user.roles "cashier"}}>
+						<label for="form-cashier">
+							Cashier
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-line" type="radio" value="line" group="roles" name="roles" data-type="array" {{itemIsChecked admin_user.roles "line"}}>
+						<label for="form-line">
+							Collection Line
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-blocked" type="radio" value="blocked" group="roles" name="roles" data-type="array" {{itemIsChecked admin_user.roles "blocked"}}>
+						<label for="form-blocked">
+							Blocked
+						</label>
+					</p>
+				</div>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<button id="form-submit-button" class="btn waves-effect waves-light" type="submit">
+						<i class="material-icons right">
+							check
+						</i>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn">
+						Cancel
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

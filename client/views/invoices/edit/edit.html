@@ -1,0 +1,81 @@
+<template name="InvoicesEdit">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> InvoicesEditEditForm}}
+</template>
+
+<template name="InvoicesEditEditForm">
+	<div id="invoices-edit-edit-form" class="container ">
+		<h4>
+			Edit invoice - {{this.params.account}}
+		</h4>
+		<form class="form form_InvoicesEditEditForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-invoice-number">
+				<p class="input-field col s12">
+					<input type="text" id="field-invoice-number" name="invoiceNumber" value="{{invoice_details.invoiceNumber}}"  autofocus="autofocus" required="required">
+					<label class="{{#if invoice_details.invoiceNumber}}active{{/if}}" for="field-invoice-number">
+						Number
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-date">
+				<p class="input-field col s12">
+					<label class="{{#if (formatDate invoice_details.date 'MM-DD-YYYY')}}active{{/if}}" for="field-date">
+						Created Date
+					</label>
+					<i class="material-icons prefix">
+						event_note
+					</i>
+					<input type="text" id="field-date" name="date" value="{{formatDate invoice_details.date 'MM-DD-YYYY'}}"  required="required" data-type="date" data-format="MM-DD-YYYY">
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-member-id">
+				<select class="dropdown" name="memberId"  required="required">
+					<option value="" disabled selected>						Choose member</option>
+					{{#each member_list}}
+					<option value="{{_id}}" {{optionIsSelected ../invoice_details.memberId _id}}>						{{name}}</option>
+					{{/each}}
+				</select>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<button id="form-submit-button" class="btn waves-effect waves-light" type="submit">
+						<i class="material-icons right">
+							check
+						</i>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn">
+						Cancel
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

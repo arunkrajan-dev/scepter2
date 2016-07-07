@@ -1,0 +1,88 @@
+<template name="PurchaseordersDetails">
+	<div class="page-container">
+		<div class="row">
+			<div class="col-md-12" id="content">
+				<div class="row" id="title_row">
+					<div class="col-md-12">
+						<div id="page_menu" class="pull-right">
+						</div>
+					</div>
+				</div>
+				{{> PurchaseordersDetailsDetailsForm}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12" id="menu">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12" id="subcontent">
+				{{> yield region='PurchaseordersDetailsSubcontent'}}
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="PurchaseordersDetailsDetailsForm">
+	<div id="purchaseorders-details-details-form" class="container ">
+		<div id="form-back-button" class="waves-effect waves-light btn">
+			<i class="material-icons left">
+				reply
+			</i>
+			Back
+		</div>
+		<h4>
+			purchaseorder #{{purchaseorder_details.purchaseorderNumber}}
+		</h4>
+		<form class="form form_PurchaseordersDetailsDetailsForm form-horizontal" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-purchaseorder-number">
+				<p class="input-field col s12">
+					<input readonly id="field-purchaseorder-number" value="{{purchaseorder_details.purchaseorderNumber}}" type="text" >
+					<label class="{{#if purchaseorder_details.purchaseorderNumber}}active{{/if}}" for="field-purchaseorder-number">
+						Number
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-date">
+				<p class="input-field col s12">
+					<input readonly id="field-date" value="{{formatDate purchaseorder_details.date 'MM-DD-YYYY'}}" type="text" >
+					<label class="{{#if (formatDate purchaseorder_details.date 'MM-DD-YYYY')}}active{{/if}}" for="field-date">
+						Created Date
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-supplier-name">
+				<p class="input-field col s12">
+					<input readonly id="field-supplier-name" value="{{purchaseorder_details.supplier.name}}" type="text" >
+					<label class="{{#if purchaseorder_details.supplier.name}}active{{/if}}" for="field-supplier-name">
+						supplier
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-total-amount">
+				<p class="input-field col s12">
+					<input readonly id="field-total-amount" value="{{purchaseorder_details.totalAmount}}" type="text" >
+					<label class="{{#if purchaseorder_details.totalAmount}}active{{/if}}" for="field-total-amount">
+						Total
+					</label>
+				</p>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div col-sm-9 col-sm-offset-3">
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

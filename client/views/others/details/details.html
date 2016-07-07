@@ -1,0 +1,90 @@
+<template name="OthersDetails">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> OthersDetailsDetailsForm}}
+</template>
+
+<template name="OthersDetailsDetailsForm">
+	<div id="others-details-details-form" class="container ">
+		<div id="form-back-button" class="waves-effect waves-light btn">
+			<i class="material-icons left">
+				reply
+			</i>
+			Back
+		</div>
+		<h4>
+			Details
+		</h4>
+		<form class="form form_OthersDetailsDetailsForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-name">
+				<p class="input-field col s12">
+					<input readonly id="field-name" value="{{other_details.name}}" type="text" >
+					<label class="{{#if other_details.name}}active{{/if}}" for="field-name">
+						Name
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-phone">
+				<p class="input-field col s12">
+					<input readonly id="field-phone" value="{{other_details.phone}}" type="text" >
+					<label class="{{#if other_details.phone}}active{{/if}}" for="field-phone">
+						Phone
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-email">
+				<p class="input-field col s12">
+					<input readonly id="field-email" value="{{other_details.email}}" type="text" >
+					<label class="{{#if other_details.email}}active{{/if}}" for="field-email">
+						E-mail
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-website">
+				<p class="input-field col s12">
+					<input readonly id="field-website" value="{{other_details.website}}" type="text" >
+					<label class="{{#if other_details.website}}active{{/if}}" for="field-website">
+						Website
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-address">
+				<p class="input-field col s12">
+					<input readonly id="field-address" value="{{other_details.address}}" type="text" >
+					<label class="{{#if other_details.address}}active{{/if}}" for="field-address">
+						Address
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-note">
+				<p class="input-field col s12">
+					<input readonly id="field-note" value="{{other_details.note}}" type="text" >
+					<label class="{{#if other_details.note}}active{{/if}}" for="field-note">
+						Note
+					</label>
+				</p>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<a href="#" id="form-close-button" class="btn green">
+						OK
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

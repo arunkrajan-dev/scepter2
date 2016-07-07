@@ -1,0 +1,81 @@
+<template name="PaidoutsEdit">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> PaidoutsEditEditForm}}
+</template>
+
+<template name="PaidoutsEditEditForm">
+	<div id="paidouts-edit-edit-form" class="container ">
+		<h4>
+			Edit paidout
+		</h4>
+		<form class="form form_PaidoutsEditEditForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-date">
+				<p class="input-field col s12">
+					<label class="{{#if (formatDate paidout_details.date 'MM-DD-YYYY')}}active{{/if}}" for="field-date">
+						Date
+					</label>
+					<i class="material-icons prefix">
+						event_note
+					</i>
+					<input type="text" id="field-date" name="date" value="{{formatDate paidout_details.date 'MM-DD-YYYY'}}"  autofocus="autofocus" required="required" data-type="date" data-format="MM-DD-YYYY">
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-supplier-id">
+				<select class="dropdown" name="supplierId" >
+					<option value="" disabled selected>						Choose For supplier</option>
+					{{#each supplier_list}}
+					<option value="{{_id}}" {{optionIsSelected ../paidout_details.supplierId _id}}>						{{name}}</option>
+					{{/each}}
+				</select>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-total-amount">
+				<p class="input-field col s12">
+					<input type="text" id="field-total-amount" name="totalAmount" value="{{paidout_details.totalAmount}}"  required="required" data-type="float">
+					<label class="{{#if paidout_details.totalAmount}}active{{/if}}" for="field-total-amount">
+						Total
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<button id="form-submit-button" class="btn waves-effect waves-light" type="submit">
+						<i class="material-icons right">
+							check
+						</i>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn">
+						Cancel
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

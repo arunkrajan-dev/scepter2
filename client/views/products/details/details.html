@@ -1,0 +1,66 @@
+<template name="ProductsDetails">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> ProductsDetailsDetailsForm}}
+</template>
+
+<template name="ProductsDetailsDetailsForm">
+	<div id="products-details-details-form" class="container ">
+		<div id="form-back-button" class="waves-effect waves-light btn">
+			<i class="material-icons left">
+				reply
+			</i>
+			Back
+		</div>
+		<h4>
+			Details
+		</h4>
+		<form class="form form_ProductsDetailsDetailsForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-name">
+				<p class="input-field col s12">
+					<input readonly id="field-name" value="{{product_details.name}}" type="text" >
+					<label class="{{#if product_details.name}}active{{/if}}" for="field-name">
+						Name
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-note">
+				<p class="input-field col s12">
+					<input readonly id="field-note" value="{{product_details.note}}" type="text" >
+					<label class="{{#if product_details.note}}active{{/if}}" for="field-note">
+						Description
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-price">
+				<p class="input-field col s12">
+					<input readonly id="field-price" value="{{product_details.price}}" type="text" >
+					<label class="{{#if product_details.price}}active{{/if}}" for="field-price">
+						Price
+					</label>
+				</p>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<a href="#" id="form-close-button" class="btn green">
+						OK
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

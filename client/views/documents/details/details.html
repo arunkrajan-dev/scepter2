@@ -1,0 +1,58 @@
+<template name="DocumentsDetails">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> DocumentsDetailsDetailsForm}}
+</template>
+
+<template name="DocumentsDetailsDetailsForm">
+	<div id="documents-details-details-form" class="container ">
+		<div id="form-back-button" class="waves-effect waves-light btn">
+			<i class="material-icons left">
+				reply
+			</i>
+			Back
+		</div>
+		<h4>
+			Details
+		</h4>
+		<form class="form form_DocumentsDetailsDetailsForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-name">
+				<p class="input-field col s12">
+					<input readonly id="field-name" value="{{document_details.name}}" type="text" >
+					<label class="{{#if document_details.name}}active{{/if}}" for="field-name">
+						Name
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-note">
+				<p class="input-field col s12">
+					<input readonly id="field-note" value="{{document_details.note}}" type="text" >
+					<label class="{{#if document_details.note}}active{{/if}}" for="field-note">
+						Note
+					</label>
+				</p>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<a href="#" id="form-close-button" class="btn green">
+						OK
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

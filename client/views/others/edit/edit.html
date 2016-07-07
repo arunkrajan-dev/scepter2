@@ -1,0 +1,114 @@
+<template name="OthersEdit">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> OthersEditEditForm}}
+</template>
+
+<template name="OthersEditEditForm">
+	<div id="others-edit-edit-form" class="container ">
+		<h4>
+			Edit other
+		</h4>
+		<form class="form form_OthersEditEditForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-name">
+				<p class="input-field col s12">
+					<input type="text" id="field-name" name="name" value="{{other_details.name}}"  autofocus="autofocus" required="required">
+					<label class="{{#if other_details.name}}active{{/if}}" for="field-name">
+						Name
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-phone">
+				<p class="input-field col s12">
+					<input type="text" id="field-phone" name="phone" value="{{other_details.phone}}" >
+					<label class="{{#if other_details.phone}}active{{/if}}" for="field-phone">
+						Phone
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-email">
+				<p class="input-field col s12">
+					<input type="text" id="field-email" name="email" value="{{other_details.email}}"  data-type="email">
+					<label class="{{#if other_details.email}}active{{/if}}" for="field-email">
+						E-mail
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-website">
+				<p class="input-field col s12">
+					<textarea id="" class="materialize-textarea " name="website">{{other_details.website}}</textarea>
+					<label class="{{#if other_details.website}}active{{/if}}" for="">
+						Website
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-address">
+				<p class="input-field col s12">
+					<textarea id="" class="materialize-textarea " name="address">{{other_details.address}}</textarea>
+					<label class="{{#if other_details.address}}active{{/if}}" for="">
+						Address
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-note">
+				<p class="input-field col s12">
+					<textarea id="" class="materialize-textarea " name="note">{{other_details.note}}</textarea>
+					<label class="{{#if other_details.note}}active{{/if}}" for="">
+						Note
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<button id="form-submit-button" class="btn waves-effect waves-light" type="submit">
+						<i class="material-icons right">
+							check
+						</i>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn">
+						Cancel
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

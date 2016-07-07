@@ -1,0 +1,66 @@
+<template name="DocumentsInsert">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> DocumentsInsertInsertForm}}
+</template>
+
+<template name="DocumentsInsertInsertForm">
+	<div id="documents-insert-insert-form" class="container ">
+		<h4>
+			New document
+		</h4>
+		<form class="form form_DocumentsInsertInsertForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-name">
+				<p class="input-field col s12">
+					<input type="text" id="field-name" name="name" value=""  autofocus="autofocus" required="required">
+					<label class="{{#if ''}}active{{/if}}" for="field-name">
+						Name
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-note">
+				<p class="input-field col s12">
+					<textarea id="" class="materialize-textarea " name="note"></textarea>
+					<label class="{{#if ''}}active{{/if}}" for="">
+						Note
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<button id="form-submit-button" class="btn waves-effect waves-light" type="submit">
+						<i class="material-icons right">
+							check
+						</i>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn">
+						Cancel
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

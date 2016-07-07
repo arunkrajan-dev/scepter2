@@ -1,0 +1,186 @@
+<template name="EmployeesInsert">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> EmployeesInsertInsertForm}}
+</template>
+
+<template name="EmployeesInsertInsertForm">
+	<div id="employees-insert-insert-form" class="container ">
+		<h4>
+			New employee
+		</h4>
+		<form class="form form_EmployeesInsertInsertForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-name">
+				<p class="input-field col s12">
+					<input type="text" id="field-name" name="name" value=""  autofocus="autofocus" required="required">
+					<label class="{{#if ''}}active{{/if}}" for="field-name">
+						Name
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="inline fields form-group  field-gender">
+				<label for="field-gender">
+					Gender
+				</label>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-male" type="radio" value="male" group="gender" name="gender" data-type="array" checked>
+						<label for="form-male">
+							Male
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-female" type="radio" value="female" group="gender" name="gender" data-type="array">
+						<label for="form-female">
+							Female
+						</label>
+					</p>
+				</div>
+				<div class="field">
+					<p class="ui radio checkbox">
+						<input id="form-transgender" type="radio" value="transgender" group="gender" name="gender" data-type="array">
+						<label for="form-transgender">
+							Transgender
+						</label>
+					</p>
+				</div>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-phone">
+				<p class="input-field col s12">
+					<input type="text" id="field-phone" name="phone" value="-" >
+					<label class="{{#if '-'}}active{{/if}}" for="field-phone">
+						Phone
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-education">
+				<p class="input-field col s12">
+					<input type="text" id="field-education" name="education" value="" >
+					<label class="{{#if ''}}active{{/if}}" for="field-education">
+						Education Qualification
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-role">
+				<p class="input-field col s12">
+					<input type="text" id="field-role" name="role" value="" >
+					<label class="{{#if ''}}active{{/if}}" for="field-role">
+						Role
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-datejoined">
+				<p class="input-field col s12">
+					<label class="{{#if ''}}active{{/if}}" for="field-datejoined">
+						Date Joined
+					</label>
+					<i class="material-icons prefix">
+						event_note
+					</i>
+					<input type="text" id="field-datejoined" name="datejoined" value=""  required="required" data-type="date" data-format="MM-DD-YYYY">
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-proof">
+				<p class="input-field col s12">
+					<textarea id="" class="materialize-textarea " name="proof"></textarea>
+					<label class="{{#if ''}}active{{/if}}" for="">
+						Proof Provided
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-email">
+				<p class="input-field col s12">
+					<input type="text" id="field-email" name="email" value=""  data-type="email">
+					<label class="{{#if ''}}active{{/if}}" for="field-email">
+						E-mail
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-address">
+				<p class="input-field col s12">
+					<textarea id="" class="materialize-textarea " name="address"></textarea>
+					<label class="{{#if ''}}active{{/if}}" for="">
+						Address
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-note">
+				<p class="input-field col s12">
+					<textarea id="" class="materialize-textarea " name="note"></textarea>
+					<label class="{{#if ''}}active{{/if}}" for="">
+						Note
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<button id="form-submit-button" class="btn waves-effect waves-light" type="submit">
+						<i class="material-icons right">
+							check
+						</i>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn">
+						Cancel
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

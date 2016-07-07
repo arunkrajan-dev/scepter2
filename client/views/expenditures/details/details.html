@@ -1,0 +1,74 @@
+<template name="ExpendituresDetails">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> ExpendituresDetailsDetailsForm}}
+</template>
+
+<template name="ExpendituresDetailsDetailsForm">
+	<div id="expenditures-details-details-form" class="container ">
+		<div id="form-back-button" class="waves-effect waves-light btn">
+			<i class="material-icons left">
+				reply
+			</i>
+			Back
+		</div>
+		<h4>
+			Details
+		</h4>
+		<form class="form form_ExpendituresDetailsDetailsForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-type">
+				<p class="input-field col s12">
+					<input readonly id="field-type" value="{{expenditure_details.type}}" type="text" >
+					<label class="{{#if expenditure_details.type}}active{{/if}}" for="field-type">
+						Type
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-sub-type">
+				<p class="input-field col s12">
+					<input readonly id="field-sub-type" value="{{expenditure_details.subType}}" type="text" >
+					<label class="{{#if expenditure_details.subType}}active{{/if}}" for="field-sub-type">
+						Sub Type
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-date">
+				<p class="input-field col s12">
+					<input readonly id="field-date" value="{{formatDate expenditure_details.date 'MM-DD-YYYY'}}" type="text" >
+					<label class="{{#if (formatDate expenditure_details.date 'MM-DD-YYYY')}}active{{/if}}" for="field-date">
+						Date
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-total-amount">
+				<p class="input-field col s12">
+					<input readonly id="field-total-amount" value="{{expenditure_details.totalAmount}}" type="text" >
+					<label class="{{#if expenditure_details.totalAmount}}active{{/if}}" for="field-total-amount">
+						Total
+					</label>
+				</p>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<a href="#" id="form-close-button" class="btn green">
+						OK
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

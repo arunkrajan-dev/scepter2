@@ -1,0 +1,81 @@
+<template name="CollectionsEdit">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> CollectionsEditEditForm}}
+</template>
+
+<template name="CollectionsEditEditForm">
+	<div id="collections-edit-edit-form" class="container ">
+		<h4>
+			Edit collection
+		</h4>
+		<form class="form form_CollectionsEditEditForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-date">
+				<p class="input-field col s12">
+					<label class="{{#if (formatDate collection_details.date 'MM-DD-YYYY')}}active{{/if}}" for="field-date">
+						Date
+					</label>
+					<i class="material-icons prefix">
+						event_note
+					</i>
+					<input type="text" id="field-date" name="date" value="{{formatDate collection_details.date 'MM-DD-YYYY'}}"  autofocus="autofocus" required="required" data-type="date" data-format="MM-DD-YYYY">
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-member-id">
+				<select class="dropdown" name="memberId" >
+					<option value="" disabled selected>						Choose For member</option>
+					{{#each member_list}}
+					<option value="{{_id}}" {{optionIsSelected ../collection_details.memberId _id}}>						{{name}}</option>
+					{{/each}}
+				</select>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-total-amount">
+				<p class="input-field col s12">
+					<input type="text" id="field-total-amount" name="totalAmount" value="{{collection_details.totalAmount}}"  required="required" data-type="float">
+					<label class="{{#if collection_details.totalAmount}}active{{/if}}" for="field-total-amount">
+						Total
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<button id="form-submit-button" class="btn waves-effect waves-light" type="submit">
+						<i class="material-icons right">
+							check
+						</i>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn">
+						Cancel
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

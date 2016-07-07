@@ -1,0 +1,122 @@
+<template name="EmployeesDetails">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> EmployeesDetailsDetailsForm}}
+</template>
+
+<template name="EmployeesDetailsDetailsForm">
+	<div id="employees-details-details-form" class="container ">
+		<div id="form-back-button" class="waves-effect waves-light btn">
+			<i class="material-icons left">
+				reply
+			</i>
+			Back
+		</div>
+		<h4>
+			Details
+		</h4>
+		<form class="form form_EmployeesDetailsDetailsForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-name">
+				<p class="input-field col s12">
+					<input readonly id="field-name" value="{{employee_details.name}}" type="text" >
+					<label class="{{#if employee_details.name}}active{{/if}}" for="field-name">
+						Name
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-gender">
+				<p class="input-field col s12">
+					<input readonly id="field-gender" value="{{employee_details.gender}}" type="text" >
+					<label class="{{#if employee_details.gender}}active{{/if}}" for="field-gender">
+						Gender
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-phone">
+				<p class="input-field col s12">
+					<input readonly id="field-phone" value="{{employee_details.phone}}" type="text" >
+					<label class="{{#if employee_details.phone}}active{{/if}}" for="field-phone">
+						Phone
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-education">
+				<p class="input-field col s12">
+					<input readonly id="field-education" value="{{employee_details.education}}" type="text" >
+					<label class="{{#if employee_details.education}}active{{/if}}" for="field-education">
+						Education Qualification
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-role">
+				<p class="input-field col s12">
+					<input readonly id="field-role" value="{{employee_details.role}}" type="text" >
+					<label class="{{#if employee_details.role}}active{{/if}}" for="field-role">
+						Role
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-datejoined">
+				<p class="input-field col s12">
+					<input readonly id="field-datejoined" value="{{formatDate employee_details.datejoined 'MM-DD-YYYY'}}" type="text" >
+					<label class="{{#if (formatDate employee_details.datejoined 'MM-DD-YYYY')}}active{{/if}}" for="field-datejoined">
+						Date Joined
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-proof">
+				<p class="input-field col s12">
+					<input readonly id="field-proof" value="{{employee_details.proof}}" type="text" >
+					<label class="{{#if employee_details.proof}}active{{/if}}" for="field-proof">
+						Proof Provided
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-email">
+				<p class="input-field col s12">
+					<input readonly id="field-email" value="{{employee_details.email}}" type="text" >
+					<label class="{{#if employee_details.email}}active{{/if}}" for="field-email">
+						E-mail
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-address">
+				<p class="input-field col s12">
+					<input readonly id="field-address" value="{{employee_details.address}}" type="text" >
+					<label class="{{#if employee_details.address}}active{{/if}}" for="field-address">
+						Address
+					</label>
+				</p>
+			</div>
+			<div class="form-group  field-note">
+				<p class="input-field col s12">
+					<input readonly id="field-note" value="{{employee_details.note}}" type="text" >
+					<label class="{{#if employee_details.note}}active{{/if}}" for="field-note">
+						Note
+					</label>
+				</p>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<a href="#" id="form-close-button" class="btn green">
+						OK
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+

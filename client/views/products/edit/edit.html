@@ -1,0 +1,78 @@
+<template name="ProductsEdit">
+	<div class="container">
+		<div id="page_menu" class="pull-right">
+		</div>
+	</div>
+	{{> ProductsEditEditForm}}
+</template>
+
+<template name="ProductsEditEditForm">
+	<div id="products-edit-edit-form" class="container ">
+		<h4>
+			Edit product - {{this.params.account}}
+		</h4>
+		<form class="form form_ProductsEditEditForm" role="form">
+			{{#if errorMessage}}
+			<div class="alert alert-warning">
+				{{errorMessage}}
+			</div>
+			{{/if}}
+
+			{{#if infoMessage}}
+			<div class="alert alert-success">
+				{{infoMessage}}
+			</div>
+			{{/if}}
+			<div class="form-group  field-name">
+				<p class="input-field col s12">
+					<input type="text" id="field-name" name="name" value="{{product_details.name}}"  autofocus="autofocus" required="required">
+					<label class="{{#if product_details.name}}active{{/if}}" for="field-name">
+						Name
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-note">
+				<p class="input-field col s12">
+					<textarea id="" class="materialize-textarea " name="note">{{product_details.note}}</textarea>
+					<label class="{{#if product_details.note}}active{{/if}}" for="">
+						Description
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div class="form-group  field-price">
+				<p class="input-field col s12">
+					<input type="text" id="field-price" name="price" value="{{product_details.price}}"  required="required" data-type="float">
+					<label class="{{#if product_details.price}}active{{/if}}" for="field-price">
+						Price
+					</label>
+				</p>
+				<span id="help-text" class="help-block">
+				</span>
+				<span id="error-text" class="help-block">
+				</span>
+			</div>
+			<div>
+				<p class="input-field col s12 submit-div">
+					<button id="form-submit-button" class="btn waves-effect waves-light" type="submit">
+						<i class="material-icons right">
+							check
+						</i>
+						Save
+					</button>
+					<a href="#" id="form-cancel-button" class="btn">
+						Cancel
+					</a>
+				</p>
+			</div>
+		</form>
+	</div>
+</template>
+
