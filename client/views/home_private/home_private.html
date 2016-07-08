@@ -3,55 +3,173 @@
 	<div class="row">
 		<div class="col s12 m6 l6">
 			<div class="row">
-				<div class="col s12 m3 l3 center-align">
+				<div class="col s3 m3 l3 center-align">
 			          	<i class="medium material-icons ">supervisor_account</i>
 					<div class="center-align"><a href="{{pathFor 'members'}}" class="red-text darken-3-text">Members</a></div>
 				</div>
-				<div class="col s12 m3 l3 center-align">
+				<div class="col s3 m3 l3 center-align">
 			          	<i class="medium material-icons">contacts</i>
 					<div class="center-align red-text"><a href="{{pathFor 'suppliers'}}" class="red-text darken-3-text">Suppliers</a></div>
 				</div>
-				<div class="col s12 m3 l3 center-align">
+				<div class="col s3 m3 l3 center-align">
 			          	<i class="medium material-icons">assignment_ind</i>
 					<div class="center-align"><a href="{{pathFor 'employees'}}" class="red-text darken-3-text">Employees</a></div>			          	
 				</div>
-				<div class="col s12 m3 l3 center-align">
+				<div class="col s3 m3 l3 center-align">
 			          	<i class="medium material-icons">contact_phone</i>
 					<div class="center-align"><a href="{{pathFor 'others'}}" class="red-text darken-3-text">Contacts</a></div>
 				</div>
 			</div>			
 			<div class="row">
-				<div class="col s12 m3 l3 center-align">
+				<div class="col s3 m3 l3 center-align">
 			          	<i class="medium material-icons ">receipt</i>
-					<div class="center-align"><a href="#" class="red-text darken-3-text">Invoices</a></div>
+					<div class="center-align">
+						<!-- Dropdown Trigger -->
+						<a class='dropdown-button red-text darken-3-text' href='#' data-activates='dropdown-invoices'>Invoices</a>
+			
+						<!-- Dropdown Structure -->
+						<ul id='dropdown-invoices' class='dropdown-content'>
+							<li class="{{menuItemClass 'invoices'}}">
+								<a href="{{pathFor 'invoices' account='bar'}}">
+									<i class="material-icons left">
+									local_bar
+									</i>
+									<br/>Bar
+								</a>
+							</li>
+							<li class="{{menuItemClass 'invoices'}}">
+								<a href="{{pathFor 'invoices' account='dining'}}">
+									<i class="material-icons left">
+									local_dining
+									</i>
+									<br/>Dining
+								</a>
+							</li>
+							<li class="{{menuItemClass 'invoices'}}">
+								<a href="{{pathFor 'invoices' account='hotel'}}">
+									<i class="material-icons left">
+									business
+									</i>
+									<br/>Hotel
+								</a>
+							</li>
+							<li class="{{menuItemClass 'invoices'}}">
+								<a href="{{pathFor 'invoices' account='sports'}}">
+									<i class="material-icons left">
+									directions_run
+									</i>
+									<br/>Sports
+								</a>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div class="col s12 m3 l3 center-align">
+				<div class="col s3 m3 l3 center-align">
 			          	<i class="medium material-icons">description</i>
-					<div class="center-align"><a href="#" class="red-text darken-3-text">PurOrd</a></div>
+					<div class="center-align">
+						<!-- Dropdown Trigger -->
+						<a class='dropdown-button red-text darken-3-text' href='#' data-activates='dropdown-purchaseorders'>P-Orders</a>
+			
+						<!-- Dropdown Structure -->
+						<ul id='dropdown-purchaseorders' class='dropdown-content'>
+							<li class="{{menuItemClass 'purchaseorders'}}">
+								<a href="{{pathFor 'purchaseorders' account='bar'}}">
+									<i class="material-icons left">
+									local_bar
+									</i>
+									<br/>Bar
+								</a>
+							</li>
+							<li class="{{menuItemClass 'purchaseorders'}}">
+								<a href="{{pathFor 'purchaseorders' account='dining'}}">
+									<i class="material-icons left">
+									local_dining
+									</i>
+									<br/>Dining
+								</a>
+							</li>
+							<li class="{{menuItemClass 'purchaseorders'}}">
+								<a href="{{pathFor 'purchaseorders' account='hotel'}}">
+									<i class="material-icons left">
+									business
+									</i>
+									<br/>Hotel
+								</a>
+							</li>
+							<li class="{{menuItemClass 'purchaseorders'}}">
+								<a href="{{pathFor 'purchaseorders' account='sports'}}">
+									<i class="material-icons left">
+									directions_run
+									</i>
+									<br/>Sports
+								</a>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div class="col s12 m3 l3 center-align">
+				<div class="col s3 m3 l3 center-align">
 			          	<i class="medium material-icons">attach_money</i>
 			          	<div class="center-align"><a href="{{pathFor 'expenditures'}}" class="red-text darken-3-text">Expenses</a></div>
 				</div>
-				<div class="col s12 m3 l3 center-align">
+				<div class="col s3 m3 l3 center-align">
 			          	<i class="medium material-icons">card_travel</i>
 			          	<div class="center-align"><a href="{{pathFor 'collections'}}" class="red-text darken-3-text">Collections</a></div>
 				</div>			
 			</div>
 			<div class="row">
-				<div class="col s12 m3 l3 center-align">
-			          	<i class="medium material-icons">folder_open</i>
-			          	<div class="center-align"><a href="{{pathFor 'documents'}}" class="red-text darken-3-text">Documents</a></div>
+				<div class="col s3 m3 l3 center-align">
+					<i class="medium material-icons">folder_open</i>
+					<div class="center-align"><a href="{{pathFor 'documents'}}" class="red-text darken-3-text">Documents</a></div>
 				</div>
-				<div class="col s12 m3 l3 center-align">
-			          	<i class="medium material-icons ">shopping_cart</i>
-			          	<div class="center-align"><a href="{{pathFor 'products'}}" class="red-text darken-3-text">Products</a></div>
+				<div class="col s3 m3 l3 center-align">
+					<i class="medium material-icons ">shopping_cart</i>
+			
+					<div class="center-align">
+						<!-- Dropdown Trigger -->
+						<a class='dropdown-button red-text darken-3-text' href='#' data-activates='dropdown-products'>Products</a>
+			
+						<!-- Dropdown Structure -->
+						<ul id='dropdown-products' class='dropdown-content'>
+							<li class="{{menuItemClass 'products'}}">
+								<a href="{{pathFor 'products' account='bar'}}">
+									<i class="material-icons left">
+									local_bar
+									</i>
+									<br/>Bar
+								</a>
+							</li>
+							<li class="{{menuItemClass 'products'}}">
+								<a href="{{pathFor 'products' account='dining'}}">
+									<i class="material-icons left">
+									local_dining
+									</i>
+									<br/>Dining
+								</a>
+							</li>
+							<li class="{{menuItemClass 'products'}}">
+								<a href="{{pathFor 'products' account='hotel'}}">
+									<i class="material-icons left">
+									business
+									</i>
+									<br/>Hotel
+								</a>
+							</li>
+							<li class="{{menuItemClass 'products'}}">
+								<a href="{{pathFor 'products' account='sports'}}">
+									<i class="material-icons left">
+									directions_run
+									</i>
+									<br/>Sports
+								</a>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div class="col s12 m3 l3 center-align">
+				<div class="col s3 m3 l3 center-align">
 			          	<i class="medium material-icons">verified_user</i>
 					<div class="center-align"><a href="{{pathFor 'admin'}}" class="red-text darken-3-text">Users</a></div>
 				</div>
-				<div class="col s12 m3 l3 center-align">
+				<div class="col s3 m3 l3 center-align">
 			          	<i class="medium material-icons">insert_chart</i>
 					<div class="center-align"><a href="#" class="red-text darken-3-text">Reports</a></div>
 				</div>

@@ -1,5 +1,5 @@
 Template.HomePrivate.rendered = function() {
-	
+	$(".dropdown-button").dropdown();
 };
 
 Template.HomePrivate.events({
