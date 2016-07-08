@@ -107,6 +107,12 @@
 				<th>
 					&nbsp;
 				</th>
+				<th>
+					&nbsp;
+				</th>
+				<th>
+					&nbsp;
+				</th>				
 			</tr>
 		</thead>
 		<tbody id="dataview-table-items">
@@ -159,6 +165,16 @@
 			<span id="delete-button" class="fa fa-trash-o {{deleteButtonClass}}" title="Delete">
 			</span>
 		</td>
+		{{#if payStatus}}
+			{{payStatus}}
+		{{else}}
+		<td>
+			<a class="btn" id="pay-button">PAY NOW</a>
+		</td>
+		<td>
+			<a class="btn" id="credit-button">CREDIT</a>
+		</td>
+		{{/if}}
 	</tr>
 </template>
 

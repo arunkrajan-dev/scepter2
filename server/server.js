@@ -187,39 +187,52 @@ Meteor.methods({
 	},
 	
 	"initDayReport": function() {
+		var tomorrow = new Date();
+		tomorrow.setDate(tomorrow.getDate() + 1);
 		Dayreports.insert({
-		  "date": new Date(),
-		  "expense": "2000",
-		  "paidout": "12200",
-		  "collection": "15000",
+		  "date": tomorrow,
+		  "status": "active",
+		  "expense": 0,
+		  "paidout": 0,
+		  "collection": 0,
 		  "summary": [
 		    {
 				"account":"bar", 
-				"invoices": "17",
-				"paid": "1000",
-				"credit": "20240"
+				"invoices": 0,
+				"paid": 0,
+				"credit": 0
 			},
 		    {
 				"account":"dining", 
-				"invoices": "20",
-				"paid": "9020",
-				"credit": "740"
+				"invoices": 0,
+				"paid": 0,
+				"credit": 0
 			},
 		    {
 				"account":"hotel", 
-				"invoices": "6",
-				"paid": "7200",
-				"credit": "1400"
+				"invoices": 0,
+				"paid": 0,
+				"credit": 0
 			},
 		    {
 				"account":"sports", 
-				"invoices": "2",
-				"paid": "140",
-				"credit": "70"
+				"invoices": 0,
+				"paid": 0,
+				"credit": 0
 			}
 		  ]  
 		});
-	}
+	},
+	
+	"incPaid": function(account, total) {
+		console.log("Account ", account, total);
+		Dayreports.update( {"summary.account":account}, { $inc : { "summary.$.invoices" : 1, "summary.$.paid": total } });
+	},
+
+	"incCredit": function(account, total) {
+		console.log("Account ", account, total);
+		Dayreports.update( {"summary.account":account}, { $inc : { "summary.$.invoices" : 1, "summary.$.credit": total } });
+	}	
 });
 
 Accounts.onCreateUser(function (options, user) {

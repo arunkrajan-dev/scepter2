@@ -1,6 +1,6 @@
 Meteor.publish("dayreport_list", function() {
 	if(Users.isInRoles(this.userId, ["md","gm"])) {
-		return Dayreports.find({}, {sort:["name"]});
+		return Dayreports.find({}, {limit:1, sort:{"date": -1}});
 	}
 	return this.ready();
 });

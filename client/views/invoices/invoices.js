@@ -272,7 +272,21 @@ Template.InvoicesViewTableItems.events({
 		e.preventDefault();
 		Router.go("invoices.edit", {invoiceId: this._id, account: this.account});
 		return false;
-	}
+	},
+	
+	"click #pay-button": function(e, t) {
+		e.preventDefault();
+		Meteor.call("incPaid", this.account, this.totalAmount);
+		Invoices.update({_id: this._id}, {$set: {"payStatus": "paid"}});
+		return false;
+	},
+	
+	"click #credit-button": function(e, t) {
+		e.preventDefault();
+		Meteor.call("incCredit", this.account, this.totalAmount);
+		Invoices.update({_id: this._id}, {$set: {"payStatus": "credit"}});
+		return false;
+	}	
 });
 
 Template.InvoicesViewTableItems.helpers({

@@ -46,7 +46,9 @@ InvoiceItems.before.remove(function(userId, doc) {
 
 InvoiceItems.after.insert(function(userId, doc) {
 	
-var sum = 0; InvoiceItems.find({ invoiceId: doc.invoiceId }).map(function(item) { sum += item.amount; }); Invoices.update({ _id: doc.invoiceId }, { $set: { totalAmount: sum }});
+var sum = 0; 
+InvoiceItems.find({ invoiceId: doc.invoiceId }).map(function(item) { sum += item.amount; }); 
+Invoices.update({ _id: doc.invoiceId }, { $set: { totalAmount: sum }});
 });
 
 InvoiceItems.after.update(function(userId, doc, fieldNames, modifier, options) {
