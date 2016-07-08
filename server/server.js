@@ -184,6 +184,41 @@ Meteor.methods({
 		this.unblock();
 
 		Email.send(options);
+	},
+	
+	"initDayReport": function() {
+		Dayreports.insert({
+		  "date": new Date(),
+		  "expense": "2000",
+		  "paidout": "12200",
+		  "collection": "15000",
+		  "summary": [
+		    {
+				"account":"bar", 
+				"invoices": "17",
+				"paid": "1000",
+				"credit": "20240"
+			},
+		    {
+				"account":"dining", 
+				"invoices": "20",
+				"paid": "9020",
+				"credit": "740"
+			},
+		    {
+				"account":"hotel", 
+				"invoices": "6",
+				"paid": "7200",
+				"credit": "1400"
+			},
+		    {
+				"account":"sports", 
+				"invoices": "2",
+				"paid": "140",
+				"credit": "70"
+			}
+		  ]  
+		});
 	}
 });
 

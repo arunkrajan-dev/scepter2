@@ -164,6 +164,7 @@
 							</li>
 						</ul>
 					</div>
+					<a class="btn" id="dayreport-init-button">Init</a>
 				</div>
 				<div class="col s3 m3 l3 center-align">
 			          	<i class="medium material-icons">verified_user</i>
@@ -175,8 +176,69 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- Day Report -->
 		<div class="col s12 m6 l6">
-			<h3 class="header center orange-text">Day Report</h3>
+		  <div class="divider"></div>
+		  <div class="section">
+		    <h5>Report for {{formatDate dayreport_details.date "DD-MMM-YYYY"}}</h5>
+			     <table class="responsive-table">
+			        <thead>
+			          <tr>
+			              <th data-field="id">Account</th>
+			              <th data-field="name">Invoices</th>
+			              <th data-field="price">Paid</th>
+						  <th data-field="price">Credit</th>
+						  <th data-field="price">Total</th>
+			          </tr>
+			        </thead>
+			        <tbody>
+			          {{#each dayreport_details.summary}}
+				          <tr>
+				            <td>{{account}}</td>
+				            <td>{{invoices}}</td>
+				            <td>{{paid}}</td>
+							<td>{{credit}}</td>
+							<td>{{invoiceTotal paid credit}}</td>
+				          </tr>			          	
+			          {{/each}}
+			        </tbody>
+			      </table>
+		  </div>
+		  <div class="divider"></div>
+		  <div class="section">
+		    <h5>Summary</h5>
+		    <div class="row">
+		    	<div class="col s6 m6 l6"><p>Net Credit:</p></div>
+		    	<div class="col s4 m4 l4">{{creditTotal}}</div>
+		    	<div class="col s2 m2 l2">(-)</div>
+		    </div>
+		    <div class="row">
+		    	<div class="col s6 m6 l6"><p>Net Paid:</p></div>
+		    	<div class="col s4 m4 l4">{{paidTotal}}</div>
+		    	<div class="col s2 m2 l2">(+)</div>
+		    </div>
+		    <div class="row">
+		    	<div class="col s6 m6 l6"><p>Collections:</p></div>
+		    	<div class="col s4 m4 l4">{{dayreport_details.collection}}</div>
+		    	<div class="col s2 m2 l2">(+)</div>
+		    </div>
+		    <div class="row">
+		    	<div class="col s6 m6 l6"><p>Expenses:</p></div>
+		    	<div class="col s4 m4 l4">{{dayreport_details.expense}}</div>
+		    	<div class="col s2 m2 l2">(-)</div>
+		    </div>		    
+		    <div class="row">
+		    	<div class="col s6 m6 l6"><p>Paid Out:</p></div>
+		    	<div class="col s4 m4 l4">{{dayreport_details.paidout}}</div>
+		    	<div class="col s2 m2 l2">(-)</div>
+		    </div>
+		  </div>
+		  <div class="divider"></div>
+		  <div class="section">
+		    <h5>Section 3</h5>
+		    <p>Stuff</p>
+		  </div>
 		</div>
 	</div>
 </template>
