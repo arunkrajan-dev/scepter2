@@ -43,7 +43,7 @@ Collections.before.remove(function(userId, doc) {
 });
 
 Collections.after.insert(function(userId, doc) {
-	
+	Dayreports.update( {"status":"active"}, { $inc : {collection: doc.totalAmount} });	
 });
 
 Collections.after.update(function(userId, doc, fieldNames, modifier, options) {

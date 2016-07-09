@@ -43,7 +43,7 @@ Expenditures.before.remove(function(userId, doc) {
 });
 
 Expenditures.after.insert(function(userId, doc) {
-	
+	Dayreports.update( {"status":"active"}, { $inc : {expense: doc.totalAmount} });
 });
 
 Expenditures.after.update(function(userId, doc, fieldNames, modifier, options) {

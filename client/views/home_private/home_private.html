@@ -109,7 +109,28 @@
 				</div>
 				<div class="col s3 m3 l3 center-align">
 			          	<i class="medium material-icons">attach_money</i>
-			          	<div class="center-align"><a href="{{pathFor 'expenditures'}}" class="red-text darken-3-text">Expenses</a></div>
+					<div class="center-align">
+						<!-- Dropdown Trigger -->
+						<a class='dropdown-button red-text darken-3-text' href='#' data-activates='dropdown-payout'>Pay Out</a>
+			
+						<!-- Dropdown Structure -->
+						<ul id='dropdown-payout' class='dropdown-content'>
+							<li class="{{menuItemClass 'payout'}}">
+								<a href="{{pathFor 'expenditures'}}">
+									<i class="material-icons left">
+									</i>
+									<br/>Expenses
+								</a>
+							</li>
+							<li class="{{menuItemClass 'payout'}}">
+								<a href="{{pathFor 'paidouts'}}">
+									<i class="material-icons left">
+									</i>
+									<br/>Paid Out
+								</a>
+							</li>
+						</ul>
+					</div>
 				</div>
 				<div class="col s3 m3 l3 center-align">
 			          	<i class="medium material-icons">card_travel</i>
@@ -209,27 +230,28 @@
 		  <div class="section">
 		    <h5>Summary</h5>
 		    <div class="row">
-		    	<div class="col s6 m6 l6"><p>Net Credit:</p></div>
-		    	<div class="col s4 m4 l4">{{creditTotal}}</div>
-		    	<div class="col s2 m2 l2">(-)</div>
+		    	<div class="col s6 m6 l6">Net Credit:</div>
+		    	<div class="col s4 m4 l4">{{dayreport_details.netcredit}}</div>
+		    	<div class="col s2 m2 l2"></div>
 		    </div>
+		    <div class="divider"></div>
 		    <div class="row">
-		    	<div class="col s6 m6 l6"><p>Net Paid:</p></div>
-		    	<div class="col s4 m4 l4">{{paidTotal}}</div>
+		    	<div class="col s6 m6 l6">Net Paid:</div>
+		    	<div class="col s4 m4 l4">{{dayreport_details.netpaid}}</div>
 		    	<div class="col s2 m2 l2">(+)</div>
 		    </div>
 		    <div class="row">
-		    	<div class="col s6 m6 l6"><p>Collections:</p></div>
+		    	<div class="col s6 m6 l6">Collections:</div>
 		    	<div class="col s4 m4 l4">{{dayreport_details.collection}}</div>
 		    	<div class="col s2 m2 l2">(+)</div>
 		    </div>
 		    <div class="row">
-		    	<div class="col s6 m6 l6"><p>Expenses:</p></div>
+		    	<div class="col s6 m6 l6">Expenses:</div>
 		    	<div class="col s4 m4 l4">{{dayreport_details.expense}}</div>
 		    	<div class="col s2 m2 l2">(-)</div>
 		    </div>		    
 		    <div class="row">
-		    	<div class="col s6 m6 l6"><p>Paid Out:</p></div>
+		    	<div class="col s6 m6 l6">Paid Out:</div>
 		    	<div class="col s4 m4 l4">{{dayreport_details.paidout}}</div>
 		    	<div class="col s2 m2 l2">(-)</div>
 		    </div>

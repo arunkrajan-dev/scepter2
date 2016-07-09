@@ -43,7 +43,7 @@ Paidouts.before.remove(function(userId, doc) {
 });
 
 Paidouts.after.insert(function(userId, doc) {
-	
+	Dayreports.update( {"status":"active"}, { $inc : {paidout: doc.totalAmount} });	
 });
 
 Paidouts.after.update(function(userId, doc, fieldNames, modifier, options) {
