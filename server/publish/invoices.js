@@ -2,6 +2,10 @@ Meteor.publish("invoice_list", function(account) {
 	return Invoices.publishJoinedCursors(Invoices.find({account:account}, {sort:[["invoiceNumber","desc"]]}));
 });
 
+Meteor.publish("invoice_list_unpaid", function(account) {
+	return Invoices.publishJoinedCursors(Invoices.find({account:account, payStatus: {$exists: false}}, {sort:[["invoiceNumber","desc"]]}));
+});
+
 Meteor.publish("invoice_list_member", function(memberId) {
 	return Invoices.publishJoinedCursors(Invoices.find({memberId:memberId}, {sort:[["invoiceNumber","desc"]]}));
 });

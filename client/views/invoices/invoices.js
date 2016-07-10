@@ -31,7 +31,7 @@ var InvoicesViewItems = function(cursor) {
 	} else {
 		searchString = searchString.replace(".", "\\.");
 		var regEx = new RegExp(searchString, "i");
-		var searchFields = ["invoiceNumber", "date", "memberId", "member.name", "totalAmount"];
+		var searchFields = ["invoiceNumber", "date", "memberId", "member.name", "totalAmount", "payStatus"];
 		filtered = _.filter(raw, function(item) {
 			var match = false;
 			_.each(searchFields, function(field) {
@@ -223,7 +223,7 @@ Template.InvoicesViewTableItems.rendered = function() {
 };
 
 Template.InvoicesViewTableItems.events({
-	"click td": function(e, t) {
+	"click .collection-item": function(e, t) {
 		e.preventDefault();
 		
 		Router.go("invoices.details", {invoiceId: this._id, account: this.account});

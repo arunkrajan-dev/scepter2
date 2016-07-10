@@ -57,6 +57,7 @@ Template.InvoicesInsertInsertForm.events({
 		pageSession.set("invoicesInsertInsertFormErrorMessage", "");
 
 		var self = this;
+		var newId = "";
 
 		function submitAction(msg) {
 			var invoicesInsertInsertFormMode = "insert";
@@ -73,7 +74,8 @@ Template.InvoicesInsertInsertForm.events({
 				}
 			}
 
-			Router.go("invoices", {account: self.params.account});
+			Router.go("invoices.details", {invoiceId: newId, account: self.params.account});
+			//Router.go("invoices", {account: self.params.account});
 		}
 
 		function errorAction(msg) {

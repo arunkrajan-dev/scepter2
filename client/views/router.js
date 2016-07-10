@@ -53,6 +53,7 @@ var privateRoutes = [
 	"expenditures.details",
 	"expenditures.edit",
 	"invoices",
+	"invoicesUnpaid",
 	"invoices.insert",
 	"invoices.details",
 	"invoices.details.items",
@@ -119,6 +120,7 @@ var roleMap = [
 	{ route: "expenditures.details",	roles: ["admin","md","gm"] },
 	{ route: "expenditures.edit",	roles: ["admin","md","gm"] },
 	{ route: "invoices",	roles: ["admin","md","gm","cashier"] },
+	{ route: "invoicesUnpaid",	roles: ["admin","md","gm","cashier"] },
 	{ route: "invoices.insert",	roles: ["admin","md","gm","cashier"] },
 	{ route: "invoices.details",	roles: ["admin","md","gm","cashier"] },
 	{ route: "invoices.details.items",	roles: ["admin","md","gm","cashier"] },
@@ -329,6 +331,7 @@ Router.map(function () {
 	this.route("expenditures.details", {path: "/expenditures/details/:expenditureId", controller: "ExpendituresDetailsController"});
 	this.route("expenditures.edit", {path: "/expenditures/edit/:expenditureId", controller: "ExpendituresEditController"});
 	this.route("invoices", {path: "/invoices/:account", controller: "InvoicesController"});
+	this.route("invoicesUnpaid", {path: "/invoices_unpaid/:account", controller: "InvoicesUnpaidController"});
 	this.route("invoices.insert", {path: "/invoices/:account/insert", controller: "InvoicesInsertController"});
 	this.route("invoices.details", {path: "/invoices/:account/details/:invoiceId", controller: "InvoicesDetailsController"});
 	this.route("invoices.details.items", {path: "/invoices/:account/details/:invoiceId/items", controller: "InvoicesDetailsItemsController"});
