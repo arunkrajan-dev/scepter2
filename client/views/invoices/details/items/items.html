@@ -12,9 +12,9 @@
 		</h3>
 		<form class="form">
 			<div id="dataview-controls" class="row">
-				<div id="dataview-controls-insert" class="item col s2 {{insertButtonClass}}">
+				<div id="dataview-controls-insert" class="item col s6 {{insertButtonClass}}">
 					<div class="input-field col s12">
-						<div id="dataview-insert-button" class="btn">
+						<div id="dataview-insert-button" class="btn green">
 							<i class="material-icons left">
 								control_point
 							</i>
@@ -22,48 +22,48 @@
 						</div>
 					</div>
 				</div>
-				<div id="dataview-controls-search" class="item col s4">
-					{{#if isNotEmpty}}
-					<div class="input-field col s12">
-						<i id="dataview-search-button" class="material-icons prefix">
-							search
-						</i>
-						<input id="dataview-search-input" style="margin-bottom:0px;" type="text">
-						<label for="dataview-search-input">
-							Search
-						</label>
-					</div>
-					{{/if}}
-				</div>
-				<div id="dataview-controls-export" class="item col s4">
-					{{#if isNotEmpty}}
-		{{#if isFound}}
-					<div>
-					</div>
-					{{else}}
-					<a class="dropdown-button btn" href="#" data-activates="dropdown_export">
-						Export
-					</a>
-					<ul id="dropdown_export" class="dropdown-content">
-						<li id="dataview-export-csv" class="item">
-							<i class="edit icon">
-							</i>
-							Export to CSV
-						</li>
-						<li id="dataview-export-tsv" class="item">
-							<i class="delete icon">
-							</i>
-							Export to TSV
-						</li>
-						<li id="dataview-export-json" class="item">
-							<i class="hide icon">
-							</i>
-							Export to JSON
-						</li>
-					</ul>
-					{{/if}}
-	{{/if}}
-				</div>
+				<!--<div id="dataview-controls-search" class="item col s4">-->
+				<!--	{{#if isNotEmpty}}-->
+				<!--	<div class="input-field col s12">-->
+				<!--		<i id="dataview-search-button" class="material-icons prefix">-->
+				<!--			search-->
+				<!--		</i>-->
+				<!--		<input id="dataview-search-input" style="margin-bottom:0px;" type="text">-->
+				<!--		<label for="dataview-search-input">-->
+				<!--			Search-->
+				<!--		</label>-->
+				<!--	</div>-->
+				<!--	{{/if}}-->
+				<!--</div>-->
+	<!--			<div id="dataview-controls-export" class="item col s4">-->
+	<!--				{{#if isNotEmpty}}-->
+	<!--	{{#if isFound}}-->
+	<!--				<div>-->
+	<!--				</div>-->
+	<!--				{{else}}-->
+	<!--				<a class="dropdown-button btn" href="#" data-activates="dropdown_export">-->
+	<!--					Export-->
+	<!--				</a>-->
+	<!--				<ul id="dropdown_export" class="dropdown-content">-->
+	<!--					<li id="dataview-export-csv" class="item">-->
+	<!--						<i class="edit icon">-->
+	<!--						</i>-->
+	<!--						Export to CSV-->
+	<!--					</li>-->
+	<!--					<li id="dataview-export-tsv" class="item">-->
+	<!--						<i class="delete icon">-->
+	<!--						</i>-->
+	<!--						Export to TSV-->
+	<!--					</li>-->
+	<!--					<li id="dataview-export-json" class="item">-->
+	<!--						<i class="hide icon">-->
+	<!--						</i>-->
+	<!--						Export to JSON-->
+	<!--					</li>-->
+	<!--				</ul>-->
+	<!--				{{/if}}-->
+	<!--{{/if}}-->
+	<!--			</div>-->
 			</div>
 		</form>
 		{{#if isNotEmpty}}
@@ -85,19 +85,19 @@
 </template>
 
 <template name="InvoicesDetailsItemsViewTable">
-	<table id="dataview-table" class="striped">
+	<table id="dataview-table" class="responsive-table">
 		<thead id="dataview-table-header">
 			<tr id="dataview-table-header-row">
-				<th class="th-sortable" data-sort="description">
+				<th class="th-sortable col s6 m6 l6" data-sort="description">
 					Description
 				</th>
-				<th class="th-sortable" data-sort="quantity">
+				<th class="th-sortable col s2 m2 l2" data-sort="quantity">
 					Quantity
 				</th>
-				<th class="th-sortable" data-sort="price">
+				<th class="th-sortable col s2 m2 l2" data-sort="price">
 					Price
 				</th>
-				<th class="th-sortable" data-sort="amount">
+				<th class="th-sortable  col s2 m2 l2" data-sort="amount">
 					Amount
 				</th>
 				<th>
@@ -138,16 +138,16 @@
 
 <template name="InvoicesDetailsItemsViewTableItems">
 	<tr id="dataview-table-items-row">
-		<td>
+		<td class="col s6 m6 l6">
 			{{description}}
 		</td>
-		<td>
+		<td class="col s2 m2 l2">
 			{{quantity}}
 		</td>
-		<td>
+		<td class="col s2 m2 l2">
 			{{price}}
 		</td>
-		<td>
+		<td class="col s2 m2 l2">
 			{{amount}}
 		</td>
 		<td>
