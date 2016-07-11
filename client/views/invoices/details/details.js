@@ -113,20 +113,21 @@ Template.InvoicesDetailsDetailsForm.events({
 	},
 	"click #form-back-button": function(e, t) {
 		e.preventDefault();
-
+		debugger;
 		Router.go("invoices", {account: this.params.account});
 	},
 	"click #pay-button": function(e, t) {
 		e.preventDefault();
-		Meteor.call("incPaid", this.account, this.totalAmount);
-		Invoices.update({_id: this._id}, {$set: {"payStatus": "paid"}});
+		debugger;
+		Meteor.call("incPaid", this.invoice_details.account, this.invoice_details.totalAmount);
+		Invoices.update({_id: this.invoice_details._id}, {$set: {"payStatus": "paid"}});
 		return false;
 	},
 	
 	"click #credit-button": function(e, t) {
 		e.preventDefault();
-		Meteor.call("incCredit", this.account, this.totalAmount);
-		Invoices.update({_id: this._id}, {$set: {"payStatus": "credit"}});
+		Meteor.call("incCredit", this.invoice_details.account, this.invoice_details.totalAmount);
+		Invoices.update({_id: this.invoice_details._id}, {$set: {"payStatus": "credit"}});
 		return false;
 	}	
 	

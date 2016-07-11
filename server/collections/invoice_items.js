@@ -13,10 +13,15 @@ InvoiceItems.allow({
 });
 
 InvoiceItems.before.insert(function(userId, doc) {
-	doc.createdAt = new Date();
-	doc.createdBy = userId;
-	doc.modifiedAt = doc.createdAt;
-	doc.modifiedBy = doc.createdBy;
+		var invoice_details = Invoices.findOne({_id:doc.invoiceId}, {});
+		if(invoice_details.payStatus) {
+			throw new Meteor.Error(400, 'Invoice is closed');
+		} else {
+			doc.createdAt = new Date();
+			doc.createdBy = userId;
+			doc.modifiedAt = doc.createdAt;
+			doc.modifiedBy = doc.createdBy;
+		}
 
 	
 	if(!doc.ownerId) doc.ownerId = userId;

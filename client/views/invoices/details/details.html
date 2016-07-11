@@ -51,7 +51,6 @@
 			    <h5>Invoice #{{invoice_details.invoiceNumber}} - {{formatDate invoice_details.date 'DD-MMM-YYYY'}}</h5>
 			    <p>BillTo:</p>
 			    <p>{{invoice_details.member.name}}</p>
-			    <p>Customer address: {{invoice_details.member.address}}</p>
 			 </div>
 			 
 			<div class="divider"></div> 
@@ -62,8 +61,8 @@
 			    	</div>
 			    	<div class="col s6 m6 l6">
 						<h5>
-						{{#if payStatus}}
-							<a href="#!">{{payStatus}}<i class="material-icons"></i></a>
+						{{#if invoice_details.payStatus}}
+							Closed : {{invoice_details.payStatus}}
 						{{else}}
 								<a href="#!" id="pay-button" class="blue-text">Pay <i class="material-icons"></i></a>/
 								<a href="#!" id="credit-button" class="orange-text">Credit<i class="material-icons"></i></a>
