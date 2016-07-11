@@ -23,24 +23,28 @@
 						</div>
 					</div>
 				</div>
-				<div id="dataview-controls-paid" class="item col s2">
-					<div class="input-field col s6">
-						<a id="dataview-unpaid-button" href="{{pathFor 'invoicesUnpaid' account=this.params.account}}" class="btn light-blue lighten-2">
-							<i class="material-icons left">
-							</i>
-							UnPaid
-						</a>
+					<div id="dataview-controls-paid" class="item col s4">
+					{{#if isNotEmpty}}
+						<div class="input-field col s6">
+							<a id="dataview-unpaid-button" href="{{pathFor 'invoicesUnpaid' account=this.params.account}}" class="btn light-blue lighten-2">
+								<i class="material-icons left">
+								</i>
+								UnPaid
+							</a>
+						</div>
+						<div class="input-field col s6">
+							<a id="dataview-paid-button" href="{{pathFor 'invoices' account=this.params.account}}" class="btn light-blue lighten-2">
+								<i class="material-icons left">
+								</i>
+								All
+							</a>
+						</div>
+					{{/if}}
 					</div>
-					<div class="input-field col s6">
-						<a id="dataview-paid-button" href="{{pathFor 'invoices' account=this.params.account}}" class="btn light-blue lighten-2">
-							<i class="material-icons left">
-							</i>
-							All
-						</a>
-					</div>
-				</div>
+					
 				<div id="dataview-controls-search" class="item col s4">
 					{{#if isNotEmpty}}
+
 					<div class="input-field col s10">
 						<i id="dataview-search-button" class="material-icons prefix">
 							search
@@ -52,7 +56,7 @@
 					</div>
 					{{/if}}
 				</div>
-				<div id="dataview-controls-export" class="item col s4">
+				<div id="dataview-controls-export" class="item col s4 hide">
 					{{#if isNotEmpty}}
 		{{#if isFound}}
 					<div>

@@ -5,7 +5,7 @@ Collections.join(Members, "memberId", "member", ["name"]);
 Paidouts.join(Suppliers, "supplierId", "supplier", ["name"]);
 
 // Invoices
-Invoices.join(Members, "memberId", "member", ["name"]);
+Invoices.join(Members, "memberId", "member", ["name", "memberId", "phone"]);
 
 // Purchaseorders
 Purchaseorders.join(Suppliers, "supplierId", "supplier", ["name"]);

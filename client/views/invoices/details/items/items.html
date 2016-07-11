@@ -10,9 +10,10 @@
 	<div id="invoices-details-items-view" >
 		<form class="form">
 			<div id="dataview-controls" class="row">
-				<div id="dataview-controls-insert" class="item col s6 {{insertButtonClass}}">
+				<div id="dataview-controls-insert" class="item col s12 {{insertButtonClass}}">
 					<div class="input-field col s12">
-						<div id="dataview-insert-button" class="btn green">
+						{{> InvoicesDetailsInsertInsertForm}}
+						<div id="dataview-insert-button" class="btn green hide">
 							<i class="material-icons left">
 								control_point
 							</i>
@@ -20,48 +21,6 @@
 						</div>
 					</div>
 				</div>
-				<!--<div id="dataview-controls-search" class="item col s4">-->
-				<!--	{{#if isNotEmpty}}-->
-				<!--	<div class="input-field col s12">-->
-				<!--		<i id="dataview-search-button" class="material-icons prefix">-->
-				<!--			search-->
-				<!--		</i>-->
-				<!--		<input id="dataview-search-input" style="margin-bottom:0px;" type="text">-->
-				<!--		<label for="dataview-search-input">-->
-				<!--			Search-->
-				<!--		</label>-->
-				<!--	</div>-->
-				<!--	{{/if}}-->
-				<!--</div>-->
-	<!--			<div id="dataview-controls-export" class="item col s4">-->
-	<!--				{{#if isNotEmpty}}-->
-	<!--	{{#if isFound}}-->
-	<!--				<div>-->
-	<!--				</div>-->
-	<!--				{{else}}-->
-	<!--				<a class="dropdown-button btn" href="#" data-activates="dropdown_export">-->
-	<!--					Export-->
-	<!--				</a>-->
-	<!--				<ul id="dropdown_export" class="dropdown-content">-->
-	<!--					<li id="dataview-export-csv" class="item">-->
-	<!--						<i class="edit icon">-->
-	<!--						</i>-->
-	<!--						Export to CSV-->
-	<!--					</li>-->
-	<!--					<li id="dataview-export-tsv" class="item">-->
-	<!--						<i class="delete icon">-->
-	<!--						</i>-->
-	<!--						Export to TSV-->
-	<!--					</li>-->
-	<!--					<li id="dataview-export-json" class="item">-->
-	<!--						<i class="hide icon">-->
-	<!--						</i>-->
-	<!--						Export to JSON-->
-	<!--					</li>-->
-	<!--				</ul>-->
-	<!--				{{/if}}-->
-	<!--{{/if}}-->
-	<!--			</div>-->
 			</div>
 		</form>
 		{{#if isNotEmpty}}
@@ -86,22 +45,22 @@
 	<table id="dataview-table" class="responsive-table">
 		<thead id="dataview-table-header">
 			<tr id="dataview-table-header-row">
-				<th class="th-sortable col s6 m6 l6" data-sort="description">
+				<th class="th-sortable col s6 m6 l4" data-sort="description">
 					Description
 				</th>
-				<th class="th-sortable col s2 m2 l2" data-sort="quantity">
+				<th class="th-sortable col s2 m2 l2 right-align" data-sort="quantity">
 					Quantity
 				</th>
-				<th class="th-sortable col s2 m2 l2" data-sort="price">
+				<th class="th-sortable col s2 m2 l2 right-align" data-sort="price">
 					Price
 				</th>
-				<th class="th-sortable  col s2 m2 l2" data-sort="amount">
+				<th class="th-sortable  col s2 m2 l2 right-align" data-sort="amount">
 					Amount
 				</th>
-				<th>
+				<th class="col s1 m1 l1">
 					&nbsp;
 				</th>
-				<th>
+				<th class="col s1 m1 l1">
 					&nbsp;
 				</th>
 			</tr>
@@ -136,23 +95,23 @@
 
 <template name="InvoicesDetailsItemsViewTableItems">
 	<tr id="dataview-table-items-row">
-		<td class="col s6 m6 l6">
+		<td class="col s6 m6 l4">
 			{{description}}
 		</td>
-		<td class="col s2 m2 l2">
+		<td class="col s2 m2 l2 right-align">
 			{{quantity}}
 		</td>
-		<td class="col s2 m2 l2">
+		<td class="col s2 m2 l2 right-align">
 			{{price}}
 		</td>
-		<td class="col s2 m2 l2">
+		<td class="col s2 m2 l2 right-align">
 			{{amount}}
 		</td>
-		<td>
+		<td class="col s1 m1 l1">
 			<span id="edit-button" class="fa fa-pencil {{editButtonClass}}" title="Edit">
 			</span>
 		</td>
-		<td>
+		<td class="col s1 m1 l1">
 			<span id="delete-button" class="fa fa-trash-o {{deleteButtonClass}}" title="Delete">
 			</span>
 		</td>

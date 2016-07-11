@@ -72,8 +72,9 @@ Template.InvoicesDetailsInsertInsertForm.events({
 					}; break;
 				}
 			}
-
-			Router.go("invoices.details", {invoiceId: self.params.invoiceId, account: self.params.account});
+			$(e.target)[0].reset();
+			$("#field-description").focus();
+			//Router.go("invoices.details", {invoiceId: self.params.invoiceId, account: self.params.account});
 		}
 
 		function errorAction(msg) {
