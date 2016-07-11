@@ -29,10 +29,14 @@ doc.amount = doc.quantity * doc.price;
 });
 
 InvoiceItems.before.update(function(userId, doc, fieldNames, modifier, options) {
-	modifier.$set = modifier.$set || {};
-	modifier.$set.modifiedAt = new Date();
-	modifier.$set.modifiedBy = userId;
-
+	var invoice_details = Invoices.findOne({_id:doc.invoiceId}, {});
+	if(invoice_details.payStatus) {
+		throw new Meteor.Error(400, 'Invoice is closed');
+	} else {
+		modifier.$set = modifier.$set || {};
+		modifier.$set.modifiedAt = new Date();
+		modifier.$set.modifiedBy = userId;
+	}
 	
 if(!modifier.$set) return; var quantity = modifier.$set.quantity || doc.quantity; var price = modifier.$set.price || doc.price; modifier.$set.amount = quantity * price;
 });
@@ -46,7 +50,10 @@ InvoiceItems.before.upsert(function(userId, selector, modifier, options) {
 });
 
 InvoiceItems.before.remove(function(userId, doc) {
-	
+	var invoice_details = Invoices.findOne({_id:doc.invoiceId}, {});
+	if(invoice_details.payStatus) {
+		throw new Meteor.Error(400, 'Invoice is closed');
+	}	
 });
 
 InvoiceItems.after.insert(function(userId, doc) {

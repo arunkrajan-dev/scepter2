@@ -32,6 +32,7 @@
 								UnPaid
 							</a>
 						</div>
+					{{/if}}
 						<div class="input-field col s6">
 							<a id="dataview-paid-button" href="{{pathFor 'invoices' account=this.params.account}}" class="btn light-blue lighten-2">
 								<i class="material-icons left">
@@ -39,7 +40,7 @@
 								All
 							</a>
 						</div>
-					{{/if}}
+					
 					</div>
 					
 				<div id="dataview-controls-search" class="item col s4">
