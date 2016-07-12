@@ -7,17 +7,23 @@ Template.HomePrivate.rendered = function() {
 };
 
 Template.HomePrivate.events({
-    "click #dayreport-closeDay-button": function (e, t) {
+    "click #approve-button": function (e, t) {
         e.preventDefault();
-        Meteor.call("closeDay");
+        Meteor.call("approveDay");
     },
-    "click #dayreport-reviewDay-button": function (e, t) {
+    "submit #review-day-form": function (e, t) {
         e.preventDefault();
-        Meteor.call("reviewDay");
+        Meteor.call("reopenDay", "re-opened for " + e.target.comment.value);
     },
-    "click #dayreport-startDay-button": function (e, t) {
+    "submit #close-day-form": function (e, t) {
         e.preventDefault();
-        Meteor.call("startDay");
+        var totalAmount = e.target.totalAmount.value;
+        Meteor.call("closeDay", totalAmount);
+    },
+    "submit #start-day-form": function (e, t) {
+        e.preventDefault();
+        var totalAmount = e.target.totalAmount.value;
+        Meteor.call("startDay", totalAmount);
     }	
 });
 

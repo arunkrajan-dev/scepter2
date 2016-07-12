@@ -185,18 +185,6 @@
 							</li>
 						</ul>
 					</div>
-					
-					{{#if dayreport_details.status}}
-						{{#if status dayreport_details.status "active"}}
-							<a class="btn" id="dayreport-closeDay-button">Close Day</a>
-						{{/if}}
-						
-						{{#if status dayreport_details.status "review"}}
-							<a class="btn" id="dayreport-reviewDay-button">Approve</a>
-						{{/if}}
-					{{else}}					
-						<a class="btn" id="dayreport-startDay-button">Start Day</a>
-					{{/if}}
 				</div>
 				<div class="col s3 m3 l3 center-align">
 			          	<i class="medium material-icons">verified_user</i>
@@ -207,13 +195,140 @@
 					<div class="center-align"><a href="#" class="red-text darken-3-text">Reports</a></div>
 				</div>
 			</div>
+			
+			<!--Dayreport Action-->
+			<div class="row">
+				<div class="col s12 m12 l12">
+							{{#if dayreport_details.status}}
+								{{#if status dayreport_details.status "active"}}
+									<!--<a class="btn" id="dayreport-closeDay-button">Close Day</a>-->
+								<form class="form col s12" role="form" id="close-day-form">
+									{{#if errorMessage}}
+									<div class="alert alert-warning">
+										{{errorMessage}}
+									</div>
+									{{/if}} {{#if infoMessage}}
+									<div class="alert alert-success">
+										{{infoMessage}}
+									</div>
+									{{/if}}
+									<div class="form-group  field-total-amount col s6 m6 l6">
+										<p class="input-field">
+											<input type="text" id="field-total-amount" name="totalAmount" value="" required="required" data-type="float">
+											<label class="{{#if ''}}active{{/if}}" for="field-total-amount">
+																Closing Balance
+															</label>
+										</p>
+										<span id="help-text" class="help-block">
+														</span>
+										<span id="error-text" class="help-block">
+														</span>
+									</div>
+									<div class="col s6 m6 l6">
+										<p class="input-field submit-div">
+											<button id="form-submit-button" class="btn waves-effect waves-light" type="submit">
+																		<i class="material-icons right">
+																			check
+																		</i>
+																		Close Day
+																	</button>
+										</p>
+									</div>
+								</form>
+								{{/if}}
+								
+								{{#if status dayreport_details.status "review"}}
+									<!--<a class="btn" id="dayreport-reviewDay-button">Approve</a>-->
+									<form class="form col s12" role="form" id="review-day-form">
+										{{#if errorMessage}}
+										<div class="alert alert-warning">
+											{{errorMessage}}
+										</div>
+										{{/if}} {{#if infoMessage}}
+										<div class="alert alert-success">
+											{{infoMessage}}
+										</div>
+										{{/if}}
+										<div class="form-group  field-total-amount col s4 m4 l4">
+											<p class="input-field">
+												<input type="text" id="field-comment" name="comment" required="required" >
+												<label class="{{#if ''}}active{{/if}}" for="field-comment">
+																	Comment
+																</label>
+											</p>
+											<span id="help-text" class="help-block">
+															</span>
+											<span id="error-text" class="help-block">
+															</span>
+										</div>
+										<div class="col s4 m4 l4">
+											<p class="input-field submit-div">
+												<button id="form-submit-button" class="btn waves-effect waves-light red" type="submit">
+																			<i class="material-icons right">
+																				close
+																			</i>
+																			Re-Open
+																		</button>
+											</p>
+										</div>
+										<div class="col s4 m4 l4">
+											<p class="input-field submit-div">
+											<a href="#" id="approve-button" class="btn green">
+																			<i class="material-icons right">
+																				check
+																			</i>												
+												Approve
+											</a>
+											</p>
+										</div>
+									</form>
+								{{/if}}
+							{{else}}					
+								<!--<a class="btn" id="dayreport-startDay-button">Start Day</a>-->
+								<form class="form col s12" role="form" id="start-day-form">
+									{{#if errorMessage}}
+									<div class="alert alert-warning">
+										{{errorMessage}}
+									</div>
+									{{/if}} {{#if infoMessage}}
+									<div class="alert alert-success">
+										{{infoMessage}}
+									</div>
+									{{/if}}
+									<div class="form-group  field-total-amount col s6 m6 l6">
+										<p class="input-field">
+											<input type="text" id="field-total-amount" name="totalAmount" value="" required="required" data-type="float">
+											<label class="{{#if ''}}active{{/if}}" for="field-total-amount">
+																Opening Balance
+															</label>
+										</p>
+										<span id="help-text" class="help-block">
+														</span>
+										<span id="error-text" class="help-block">
+														</span>
+									</div>
+									<div class="col s6 m6 l6">
+										<p class="input-field submit-div">
+											<button id="form-submit-button" class="btn waves-effect waves-light" type="submit">
+																		<i class="material-icons right">
+																			check
+																		</i>
+																		Start Day
+																	</button>
+										</p>
+									</div>
+								</form>						
+							
+							{{/if}}
+				</div>
+			</div>			
 		</div>
 		
 		<!-- Day Report -->
 		<div class="col s12 m6 l6 {{#if dayreport_details.status}} {{else}} hide {{/if}}">
 		  <div class="divider"></div>
 		  <div class="section">
-		    <h5>Report for {{formatDate dayreport_details.date "DD-MMM-YYYY"}} - {{dayreport_details.status}}</h5>
+		    <h5>Report for {{formatDate dayreport_details.date "DD-MMM-YYYY"}} - {{#if dayreport_details.reopenComment}} {{dayreport_details.reopenComment}} {{else}} {{dayreport_details.status}} {{/if}}</h5>
 			     <table class="responsive-table">
 			        <thead>
 			          <tr>
@@ -266,6 +381,18 @@
 		    	<div class="col s4 m4 l4">{{dayreport_details.paidout}}</div>
 		    	<div class="col s2 m2 l2">(-)</div>
 		    </div>
+		    <div class="row">
+		    	<div class="col s6 m6 l6">Opening Balance:</div>
+		    	<div class="col s4 m4 l4">{{dayreport_details.openingBalance}}</div>
+		    	<div class="col s2 m2 l2">(+)</div>
+		    </div>
+		    {{#if dayreport_details.actualClosingBalance}}
+		    <div class="row">
+		    	<div class="col s6 m6 l6">Opening Balance:</div>
+		    	<div class="col s4 m4 l4">{{dayreport_details.actualClosingBalance}}</div>
+		    	<div class="col s2 m2 l2">(-)</div>
+		    </div>
+		    {{/if}}
 		  </div>
 		  <div class="divider"></div>
 		  <div class="section">
@@ -274,4 +401,6 @@
 		  </div>
 		</div>
 	</div>
+	
+	<br/><br/>
 </template>
