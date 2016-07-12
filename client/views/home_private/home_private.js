@@ -7,10 +7,17 @@ Template.HomePrivate.rendered = function() {
 };
 
 Template.HomePrivate.events({
-    "click #dayreport-init-button": function (e, t) {
+    "click #dayreport-closeDay-button": function (e, t) {
         e.preventDefault();
-        Meteor.call("initDayReport");
-        alert("done");
+        Meteor.call("closeDay");
+    },
+    "click #dayreport-reviewDay-button": function (e, t) {
+        e.preventDefault();
+        Meteor.call("reviewDay");
+    },
+    "click #dayreport-startDay-button": function (e, t) {
+        e.preventDefault();
+        Meteor.call("startDay");
     }	
 });
 
@@ -28,4 +35,11 @@ Template.HomePrivate.helpers({
 	"creditTotal": function () {
 	    // return pageSession.get("creditTotal");
 	},
+	"status": function(a, b) {
+		if(a == b) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 });

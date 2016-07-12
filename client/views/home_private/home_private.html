@@ -185,7 +185,18 @@
 							</li>
 						</ul>
 					</div>
-					<a class="btn" id="dayreport-init-button">Init</a>
+					
+					{{#if dayreport_details.status}}
+						{{#if status dayreport_details.status "active"}}
+							<a class="btn" id="dayreport-closeDay-button">Close Day</a>
+						{{/if}}
+						
+						{{#if status dayreport_details.status "review"}}
+							<a class="btn" id="dayreport-reviewDay-button">Approve</a>
+						{{/if}}
+					{{else}}					
+						<a class="btn" id="dayreport-startDay-button">Start Day</a>
+					{{/if}}
 				</div>
 				<div class="col s3 m3 l3 center-align">
 			          	<i class="medium material-icons">verified_user</i>
@@ -199,10 +210,10 @@
 		</div>
 		
 		<!-- Day Report -->
-		<div class="col s12 m6 l6">
+		<div class="col s12 m6 l6 {{#if dayreport_details.status}} {{else}} hide {{/if}}">
 		  <div class="divider"></div>
 		  <div class="section">
-		    <h5>Report for {{formatDate dayreport_details.date "DD-MMM-YYYY"}}</h5>
+		    <h5>Report for {{formatDate dayreport_details.date "DD-MMM-YYYY"}} - {{dayreport_details.status}}</h5>
 			     <table class="responsive-table">
 			        <thead>
 			          <tr>

@@ -5,6 +5,13 @@ Meteor.publish("dayreport_list", function() {
 	return this.ready();
 });
 
+Meteor.publish("dayreport_list_home", function() {
+	if(Users.isInRoles(this.userId, ["md","gm"])) {
+		return Dayreports.find({status:{$in: ["active", "review"]}}, {limit:1, sort:{"date": -1}});
+	}
+	return this.ready();
+});
+
 Meteor.publish("dayreport_empty", function() {
 	if(Users.isInRoles(this.userId, ["md","gm"])) {
 		return Dayreports.find({_id:null}, {});

@@ -185,54 +185,6 @@ Meteor.methods({
 
 		Email.send(options);
 	},
-	
-	"initDayReport": function() {
-		var tomorrow = new Date();
-		tomorrow.setDate(tomorrow.getDate() + 1);
-		Dayreports.insert({
-		  "date": tomorrow,
-		  "status": "active",
-		  "expense": 0,
-		  "paidout": 0,
-		  "collection": 0,
-		  "netpaid": 0,
-		  "netcredit": 0,
-		  "summary": [
-		    {
-				"account":"bar", 
-				"invoices": 0,
-				"paid": 0,
-				"credit": 0
-			},
-		    {
-				"account":"dining", 
-				"invoices": 0,
-				"paid": 0,
-				"credit": 0
-			},
-		    {
-				"account":"hotel", 
-				"invoices": 0,
-				"paid": 0,
-				"credit": 0
-			},
-		    {
-				"account":"sports", 
-				"invoices": 0,
-				"paid": 0,
-				"credit": 0
-			}
-		  ]  
-		});
-	},
-	
-	"incPaid": function(account, total) {
-		Dayreports.update( {"summary.account":account}, { $inc : { "summary.$.invoices" : 1, "summary.$.paid": total, "netpaid": total } });
-	},
-
-	"incCredit": function(account, total) {
-		Dayreports.update( {"summary.account":account}, { $inc : { "summary.$.invoices" : 1, "summary.$.credit": total, "netcredit": total } });
-	}	
 });
 
 Accounts.onCreateUser(function (options, user) {

@@ -19,7 +19,7 @@ this.HomePrivateController = RouteController.extend({
 		
 
 		var subs = [
-			Meteor.subscribe("dayreport_list")
+			Meteor.subscribe("dayreport_list_home")
 		];
 		var ready = true;
 		_.each(subs, function(sub) {
