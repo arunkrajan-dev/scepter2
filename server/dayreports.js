@@ -73,10 +73,10 @@ Meteor.methods({
 	},
 	
 	"incPaid": function(account, total) {
-		Dayreports.update( {"summary.account":account}, { $inc : { "summary.$.invoices" : 1, "summary.$.paid": total, "netpaid": total } });
+		Dayreports.update( {"summary.account":account, "status": "active"}, { $inc : { "summary.$.invoices" : 1, "summary.$.paid": total, "netpaid": total } });
 	},
 
 	"incCredit": function(account, total) {
-		Dayreports.update( {"summary.account":account}, { $inc : { "summary.$.invoices" : 1, "summary.$.credit": total, "netcredit": total } });
+		Dayreports.update( {"summary.account":account, "status": "active"}, { $inc : { "summary.$.invoices" : 1, "summary.$.credit": total, "netcredit": total } });
 	}    
 });
